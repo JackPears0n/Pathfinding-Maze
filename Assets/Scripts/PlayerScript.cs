@@ -37,6 +37,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerInput();
+
         sm.CurrentState.HandleInput();
         sm.CurrentState.LogicUpdate();
 
