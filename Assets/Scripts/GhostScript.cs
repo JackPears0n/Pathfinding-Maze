@@ -19,7 +19,11 @@ public class GhostScript : MonoBehaviour
 
     public bool dead;
 
+    public float idleDuration;
+    public bool canHunt = false;
+
     //Player status variables
+    public GIdle gidleS;
     public Hunting huntingS;
 
     private StateMachine sm;
@@ -32,11 +36,15 @@ public class GhostScript : MonoBehaviour
         anim = GetComponent<Animator>();
 
         // add new states here
+        gidleS = new GIdle(this, sm);
         huntingS = new Hunting(this, sm);
 
 
         // initialise the statemachine with the default state
-        sm.Init(huntingS);
+        sm.Init(gidleS);
+
+        StartCoroutine(BeginHunt());
+
     }
 
     // Update is called once per frame
@@ -49,10 +57,11 @@ public class GhostScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5F)
+        if (!agent.pathPending && agent.remainingDistance < 0.5F && canHunt)
         {
             GoToTarget();
         }
+
     }
 
     public void GoToTarget()
@@ -65,5 +74,24 @@ public class GhostScript : MonoBehaviour
 
         agent.destination = targets[destPoint].transform.position;
         destPoint = (destPoint + 1) % targets.Length;
+    }
+
+    public void CheckForHunt()
+    {
+        if (canHunt)
+        {
+            sm.ChangeState(huntingS);
+        }
+        else
+        {
+            sm.ChangeState(gidleS);
+        }
+    }
+
+    public IEnumerator BeginHunt()
+    {
+        yield return new WaitForSeconds(idleDuration);
+
+        canHunt = true;
     }
 }

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hunting : State
+public class GIdle : State
 {
-    public Hunting(GhostScript ghost, StateMachine sm) : base(ghost, sm)
+    public GIdle(GhostScript ghost, StateMachine sm) : base(ghost, sm)
     {
     }
+
     public override void Enter()
     {
         base.Enter();
@@ -26,14 +27,11 @@ public class Hunting : State
     {
         base.LogicUpdate();
 
+        gs.CheckForHunt();
     }
 
     public override void PhysicsUpdate()
     {
-        if (!gs.agent.pathPending && gs.agent.remainingDistance < 0.5F)
-        {
-            gs.GoToTarget();
-        }
-
+        base.PhysicsUpdate();
     }
 }

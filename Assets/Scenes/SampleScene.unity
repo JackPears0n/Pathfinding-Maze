@@ -206,7 +206,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3618383
 MeshRenderer:
@@ -354,6 +354,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 4
+  canHunt: 0
 --- !u!135 &43018116
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -427,6 +429,8 @@ MonoBehaviour:
   agent: {fileID: 1154630427}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 0
+  canHunt: 0
 --- !u!135 &51679771
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -869,6 +873,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 0
+  canHunt: 0
 --- !u!1001 &271155504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1573,6 +1579,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 0
+  canHunt: 0
 --- !u!1 &615152553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,6 +1858,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 2
+  canHunt: 0
 --- !u!135 &713237590
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3405,6 +3415,8 @@ MonoBehaviour:
   agent: {fileID: 1154630427}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 0
+  canHunt: 0
 --- !u!1 &1158183146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,6 +3566,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 0
+  canHunt: 0
 --- !u!1001 &1215188957
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3988,6 +4002,8 @@ MonoBehaviour:
   agent: {fileID: 0}
   anim: {fileID: 0}
   dead: 0
+  idleDuration: 2
+  canHunt: 0
 --- !u!135 &1609087199
 SphereCollider:
   m_ObjectHideFlags: 0
