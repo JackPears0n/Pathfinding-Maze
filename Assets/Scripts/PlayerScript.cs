@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerScript : MonoBehaviour
 
     public float speed;
 
-    public Rigidbody rb;  
+    public Rigidbody rb;
 
     public Vector3 movement;
 
@@ -47,6 +48,11 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         sm.CurrentState.PhysicsUpdate();
+
+        if (movement != Vector3.zero)
+        {
+            transform.forward = movement;
+        }
     }
 
 
@@ -84,4 +90,12 @@ public class PlayerScript : MonoBehaviour
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
 
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("Ghost"))
+        {
+            SceneManager.LoadScene("Game Over");
+        }
+
+    }
 }
